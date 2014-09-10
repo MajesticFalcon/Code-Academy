@@ -1,0 +1,32 @@
+class Hollywood_theaters
+@@workers = {:Schylar => {:name => "Schylar", :position => "Crew", :shift => "Midnight"}}
+weekly_pay_roll = {:name => "Schylar", :total_hours => 40}
+
+ class Workers < Hollywood_theaters
+
+  def login(name,shift)
+
+  end
+
+  def fire name
+    @@workers.delete name.to_sym
+  end
+
+  def hire name, position, shift
+    @@workers.store(name.to_sym,{:name => "Filipe",:position => position, :shift => shift})
+
+  end
+
+  def display_staff name = nil
+    return @@workers[name.to_sym].each {|name,position,shift| puts name,position,shift} unless name == nil
+    return @@workers.each {|name,profile| puts name}
+
+  end
+
+end
+
+test = Workers.new
+test.hire "Filipe", "bathrooms", "Day crew"
+
+test.display_staff "Schylar"
+end
